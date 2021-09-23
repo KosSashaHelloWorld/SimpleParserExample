@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.example.demo.entity.Product" table="Products" catalog="ebaydb">
+        <id name="id" type="long">
+            <column name="id"/>
+            <generator class="increment" />
+        </id>
+        <property name="productName" type="string">
+            <column name="product_name" length="255"/>
+        </property>
+        <property name="productPrice" type="string">
+            <column name="product_price" length="45"/>
+        </property>
+        <property name="deliveryPrice" type="string">
+            <column name="delivery_price" length="45"/>
+        </property>
+        <property name="country" type="string">
+            <column name="country" length="45"/>
+        </property>
+        <property name="seekers" type="string">
+            <column name="seekers" length="45"/>
+        </property>
+        <property name="productHref" type="string">
+            <column name="product_href" length="255"/>
+        </property>
+    </class>
+</hibernate-mapping>
