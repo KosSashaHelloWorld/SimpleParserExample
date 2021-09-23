@@ -1,5 +1,5 @@
 # SimpleParserExample
 
-Desktop application
-GUI: JavaFX
-Database: MySQL + Hibernate
+# Desktop application
+# GUI: JavaFX
+# Database: MySQL + Hibernate
