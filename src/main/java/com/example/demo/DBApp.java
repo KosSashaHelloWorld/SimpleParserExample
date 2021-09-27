@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.persistence.HibernateUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,7 +16,14 @@ public class DBApp extends Application {
         stage.setTitle("Database");
         stage.setScene(scene);
         stage.show();
+
+        stage.setOnCloseRequest(closeEvent -> {
+            HibernateUtil.closeSession();
+            HibernateUtil.closeSessionFactory();
+            System.out.println("Application closing...");
+        });
     }
+
 
     public static void main(String[] args) {
         launch();

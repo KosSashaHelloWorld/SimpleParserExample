@@ -2,7 +2,7 @@ package com.example.demo.entity;
 
 import javax.persistence.*;
 
-@Table(name = "products")
+@Table(name = "products", schema = "ebaydb")
 @Entity
 public class Product {
     @Id
@@ -96,4 +96,5 @@ public class Product {
     public void setProductHref(String productHref) {
         this.productHref = productHref;
     }
+
 }

@@ -1,4 +1,4 @@
-/**
+/*
  * Sample Skeleton for 'GUI.fxml' Controller Class
  */
 
@@ -6,6 +6,7 @@ package com.example.demo;
 
 import com.example.demo.entity.Product;
 import com.example.demo.persistence.HibernateUtil;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.jsoup.nodes.Document;
 
 import java.awt.*;
@@ -125,12 +127,35 @@ public class DBController {
             thread.start();
         });
 
-        AddBut.setOnAction(event -> {
-            Session session = HibernateUtil.getSessionFactory().openSession();
+        AddBut.setOnAction(addEvent -> {
+            HibernateUtil.buildSessionFactory();
+            Session session = HibernateUtil.openSession();
+
             Transaction transaction = session.beginTransaction();
+
             session.save(table.getSelectionModel().getSelectedItem());
             transaction.commit();
-            session.close();
+
+            HibernateUtil.closeSession();
+        });
+
+        ViewBut.setOnAction(viewEvent -> {
+            HibernateUtil.buildSessionFactory();
+            viewFavorites();
+        });
+
+        DeleteBut.setOnAction(deleteEvent -> {
+            HibernateUtil.buildSessionFactory();
+            Session session = HibernateUtil.openSession();
+
+            Transaction transaction = session.beginTransaction();
+
+            session.delete(table.getSelectionModel().getSelectedItem());
+            transaction.commit();
+
+            HibernateUtil.closeSession();
+
+            viewFavorites();
         });
 
         openLinkContextMenu.setOnAction(openLinkEvent -> {
@@ -151,5 +176,21 @@ public class DBController {
         ViewBut.setDisable(bool);
         AddBut.setDisable(bool);
         DeleteBut.setDisable(bool);
+    }
+
+    private void viewFavorites(){
+        Session session = HibernateUtil.openSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        String hql = "FROM Product";
+        Query<Product> query = session.createQuery(hql, Product.class);
+        ObservableList<Product> productsList = FXCollections.observableArrayList(query.getResultList());
+
+        table.getItems().removeAll();
+        table.getItems().setAll(productsList);
+
+        transaction.commit();
+        HibernateUtil.closeSession();
     }
 }

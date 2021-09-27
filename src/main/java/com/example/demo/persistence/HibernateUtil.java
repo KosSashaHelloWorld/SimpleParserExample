@@ -1,34 +1,25 @@
 package com.example.demo.persistence;
 
-import com.example.demo.entity.Product;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
+
+import com.example.demo.lib.MyConnector;
+import org.hibernate.Session;
 
 public class HibernateUtil {
+    private static final MyConnector connector = new MyConnector();
 
-    private static final SessionFactory sessionFactory = buildSessionFactory();
-
-    private static SessionFactory buildSessionFactory() {
-        try {
-            Configuration configuration = new Configuration().configure();
-            configuration.addAnnotatedClass(Product.class);
-            StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-
-            return configuration.buildSessionFactory(builder.build());
-        }
-        catch (Throwable ex) {
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
+    public static void buildSessionFactory(){
+        connector.buildConfigSessionFactory();
     }
 
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
+    public static Session openSession(){
+        return connector.openSession();
     }
 
-    public static void shutdown() {
-        getSessionFactory().close();
+    public static void closeSession(){
+        connector.openSession().close();
     }
 
+    public static void closeSessionFactory(){
+        connector.closeSessionFactory();
+    }
 }

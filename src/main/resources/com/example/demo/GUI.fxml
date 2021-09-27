@@ -14,53 +14,55 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane prefHeight="580.0" prefWidth="1400.0" style="-fx-background-color: e9e9e9;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.DBController">
+<BorderPane prefHeight="580.0" prefWidth="1400.0" style="-fx-background-color: e9e9e9;" xmlns="http://javafx.com/javafx/16"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.DBController">
    <left>
-      <GridPane BorderPane.alignment="CENTER">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Button fx:id="ebayBut" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="ebay">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <tooltip>
-                  <Tooltip text="Искать на www.ebay.com" />
-               </tooltip>
-            </Button>
-            <Button fx:id="AddBut" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Добавить в избранное" GridPane.rowIndex="1">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="ViewBut" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Показать избранное" GridPane.rowIndex="2">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="DeleteBut" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Убрать из избранного" GridPane.rowIndex="3">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <ProgressBar fx:id="progressBar" prefHeight="138.0" prefWidth="181.0" progress="0.0" GridPane.rowIndex="6" />
-            <TextField fx:id="searchField" promptText="Поиск..." GridPane.rowIndex="4">
-               <tooltip>
-                  <Tooltip text="Введите слово/фразу для поиска" />
-               </tooltip>
-            </TextField>
-         </children>
-      </GridPane>
+       <GridPane BorderPane.alignment="CENTER">
+           <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+           </columnConstraints>
+           <rowConstraints>
+               <RowConstraints vgrow="SOMETIMES"/>
+               <RowConstraints vgrow="SOMETIMES"/>
+               <RowConstraints vgrow="SOMETIMES"/>
+               <RowConstraints vgrow="SOMETIMES"/>
+               <RowConstraints vgrow="SOMETIMES"/>
+               <RowConstraints vgrow="SOMETIMES"/>
+               <RowConstraints vgrow="SOMETIMES"/>
+           </rowConstraints>
+           <Button fx:id="ebayBut" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="ebay">
+              <cursor>
+                  <Cursor fx:constant="HAND"/>
+              </cursor>
+              <tooltip>
+                  <Tooltip text="Искать на www.ebay.com"/>
+              </tooltip>
+           </Button>
+           <Button fx:id="AddBut" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0"
+                   text="Добавить в избранное" GridPane.rowIndex="1">
+              <cursor>
+                  <Cursor fx:constant="HAND"/>
+              </cursor>
+           </Button>
+           <Button fx:id="ViewBut" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Показать избранное"
+                   GridPane.rowIndex="2">
+              <cursor>
+                  <Cursor fx:constant="HAND"/>
+              </cursor>
+           </Button>
+           <Button fx:id="DeleteBut" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0"
+                   text="Убрать из избранного" GridPane.rowIndex="3">
+              <cursor>
+                  <Cursor fx:constant="HAND"/>
+              </cursor>
+           </Button>
+           <ProgressBar fx:id="progressBar" prefHeight="138.0" prefWidth="181.0" progress="0.0" GridPane.rowIndex="6"/>
+           <TextField fx:id="searchField" promptText="Поиск..." GridPane.rowIndex="4">
+              <tooltip>
+                  <Tooltip text="Введите слово/фразу для поиска"/>
+              </tooltip>
+           </TextField>
+       </GridPane>
    </left>
    <center>
       <TableView fx:id="table" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
