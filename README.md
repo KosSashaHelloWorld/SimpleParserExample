@@ -1,8 +1,7 @@
 # SimpleParserExample
-
-# Desktop application
-# GUI: JavaFX
-# Database: MySQL + Hibernate
+* Desktop application
+* GUI: JavaFX
+* Database: MySQL + Hibernate
 
 # Functional:
 1. Parsing ebay for "keyword" (JavaFX table)
